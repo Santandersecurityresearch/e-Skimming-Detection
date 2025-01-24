@@ -64,6 +64,14 @@ Modify and adjust these rules to how you see fit. We love PR's too if you wish t
 | `detect-devtools-debugger-check`   | Detects devtools and debugger anti-debugging techniques     | WARNING      |
 | `detect-localStorage`              | Flags abuse of localStorage for skimming purposes           | WARNING      |
 
+### 7. Rules Running
+
+When all set up, it should look like so:
+
+![](img/semgrep1.png)
+![](img/semgrep2.png)
+
+
 
 ### ⚠️ Disclaimer
 
