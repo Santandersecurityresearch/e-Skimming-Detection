@@ -1,0 +1,18 @@
+rules:
+  - id: obfuscated-data-exfiltration
+    languages:
+      - JavaScript
+    patterns:
+      - pattern: "btoa(unescape(encodeURIComponent(localStorage[$STORAGE]($KEY))))"  
+      - pattern: "$ENCODED_DATA = $ANYTHING + $ANYTHING;"
+      - pattern: "fetch($OBFUSCATED_URL)"
+      - pattern: "new Blob([$ANYTHING], {type: $ANYTHING});"
+      - pattern: "new FormData();"
+    message: "Potential obfuscated data exfiltration detected."
+    severity: WARNING
+    metadata:
+      author: "Daniel Cuthbert @dcuthbert"
+      organization: "Santander Cyber Security Research (CSR)"
+      creation_date: "2025-01-24"
+
+

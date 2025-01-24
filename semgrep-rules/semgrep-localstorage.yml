@@ -1,0 +1,15 @@
+rules:
+  - id: detect-localStorage
+    languages:
+      - javascript
+    patterns:
+      - pattern: localStorage[...](..., JSON[...](...))
+      - pattern: JSON[...](localStorage[...](...))
+      - pattern: localStorage.setItem(...)
+    message: "Detected use of localStorage which is often used by skimmers to save credit card data."
+    severity: WARNING
+    metadata:
+      author: "Daniel Cuthbert @dcuthbert"
+      organization: "Santander Cyber Security Research (CSR)"
+      creation_date: "2025-01-24"
+  

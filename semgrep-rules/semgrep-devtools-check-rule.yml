@@ -1,0 +1,14 @@
+rules:
+  - id: detect-devtools-debugger-check
+    languages:
+      - javascript
+    patterns:
+      - pattern: "if (!window.devtools.isOpen) {...}"
+      - pattern: "if (devtools[$X]) {...}"  
+    message: "Detected potential devtools or debugger check."
+    severity: WARNING
+    metadata:
+      author: "Daniel Cuthbert @dcuthbert"
+      organization: "Santander Cyber Security Research (CSR)"
+      creation_date: "2025-01-24"
+

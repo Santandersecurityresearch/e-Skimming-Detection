@@ -1,0 +1,13 @@
+rules:
+  - id: detect-credit-card-extraction
+    languages:
+      - javascript 
+    pattern: |
+      var $CC_NUMBER_VAR = $INPUT[$INDEX1](/\s+/g, $VALUE1)[$INDEX2](/[^0-9]/gi, $VALUE2);
+      var $EXTRACTED_DIGITS = $CC_NUMBER_VAR[$INDEX3](/\d{4,17}/g);
+    message: "Detected potential credit card number extraction function blocks."
+    severity: WARNING
+    metadata:
+      author: "Daniel Cuthbert @dcuthbert"
+      organization: "Santander Cyber Security Research (CSR)"
+      creation_date: "2025-01-24"

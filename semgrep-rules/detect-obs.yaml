@@ -1,0 +1,16 @@
+rules:
+  - id: obfuscated-string
+    patterns:
+      - pattern: var $VAR = [..., "$STR", ...];
+      - metavariable-regex:
+          metavariable: $STR
+          regex: ^(\\x[0-9a-fA-F]{2}){4,}
+      - focus-metavariable: $STR
+    message: Hex encoded string in var decl. This a common obfuscation technique used by skimmers to hide malicious code.
+    languages:
+      - js
+    severity: WARNING
+    metadata:
+      author: "Daniel Cuthbert @dcuthbert"
+      organization: "Santander Cyber Security Research (CSR)"
+      creation_date: "2025-01-24"

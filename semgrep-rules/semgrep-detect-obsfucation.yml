@@ -1,0 +1,29 @@
+rules:
+  - id: detect-obfuscated-js
+    languages:
+      - javascript
+    pattern-either:
+      - patterns:
+          - pattern: var $VAR = [..., "$STR", ...];
+          - metavariable-regex:
+              metavariable: $STR
+              regex: ^(\\x[0-9a-fA-F]{2}){2,}$  
+          - focus-metavariable: $STR
+      - pattern: eval($OBFUSCATED_VAR);
+      - pattern: Function($OBFUSCATED_CODE);
+      - patterns:
+          - pattern: var $VAR = "$STR";
+          - metavariable-regex:
+              metavariable: $STR
+              regex: ^(\\x[0-9a-fA-F]{2}){4,}$ 
+          - focus-metavariable: $STR 
+      - pattern: atob($ENCODED_DATA);
+      - pattern: btoa($ENCODED_DATA);
+      - pattern: var $DECODER = [...];
+      - pattern: setTimeout($OBFUSCATED_CODE);
+    message: Detected obfuscated JavaScript, including potential decoding mechanisms and encoded strings.
+    severity: WARNING
+    metadata:
+      author: "Daniel Cuthbert @dcuthbert"
+      organization: "Santander Cyber Security Research (CSR)"
+      creation_date: "2025-01-24"
