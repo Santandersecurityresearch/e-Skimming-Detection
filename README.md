@@ -5,6 +5,10 @@
 ## 🛡️ Why We Created These Rules
 The global threat posed by Magecart and similar skimming malware continues to grow. Criminals use JavaScript obfuscation and data exfiltration techniques to steal sensitive information, such as credit card details, directly from websites. These attacks often go undetected due to the complexity and variability of the malicious code.
 
+The Insikt Group released their [Annual Payment Fraud Intelligence Report: 2024](https://www.recordedfuture.com/research/annual-payment-fraud-intelligence-report-2024), which stated:
+
+> The volume of Magecart e-skimmer infections surged, reaching nearly 11,000 unique e-commerce domains—a threefold increase from 2023. This spike was driven by the CosmicSting vulnerability (CVE-2024-34102), alongside the use of out-of-the-box e-skimmer kits like “[Sniffer by Fleras](https://www.recordedfuture.com/research/h1-2024-malware-and-vulnerability-trends-report).”
+
 At **Santander Cyber Security Research (CSR)**, we believe in contributing to the security community by sharing actionable tools to detect and mitigate these threats. These Semgrep rules were crafted to identify malicious JavaScript patterns, obfuscation techniques, and credit card skimming operations at scale. Our goal is to help developers, security engineers, and organizations protect their websites and users.
 
 ---
