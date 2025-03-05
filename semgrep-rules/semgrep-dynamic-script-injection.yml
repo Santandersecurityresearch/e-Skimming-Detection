@@ -1,0 +1,15 @@
+rules:
+  - id: eskimmer-dynamic-script-injection
+    languages: [javascript]
+    patterns:
+      - pattern: |
+          var $X = document.createElement("script");
+      - pattern: |
+          $X.setAttribute("src", $Y);
+      - pattern: |
+          document.getElementsByTagName("head")[0].appendChild($X);
+      - pattern: |
+          document.currentScript.remove();
+    message: "Potential web skimmer detected: dynamic script injection pattern (creation of a script element, setting an external src, appending to head, and immediate removal of the current script) is suspicious."
+    severity: ERROR
+

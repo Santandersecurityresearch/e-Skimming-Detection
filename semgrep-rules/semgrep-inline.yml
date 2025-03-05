@@ -1,0 +1,16 @@
+rules:
+  - id: eskimmer-new-strain-inline
+    languages: [javascript]
+    patterns:
+      - pattern: |
+          var $SCRIPT = document.createElement("script");
+      - pattern: |
+          $SCRIPT.setAttribute("src", $LIT);
+      - pattern: |
+          document.currentScript.remove();
+    metavariable-regex:
+      metavariable: $LIT
+      regex: "^https?://"
+    message: "Potential inline e-skimmer detected: dynamic script injection (creating a script element, setting an external src, and immediately removing the current script) may indicate malicious obfuscated behavior."
+    severity: ERROR
+

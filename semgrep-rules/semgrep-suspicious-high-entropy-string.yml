@@ -1,0 +1,10 @@
+rules:
+  - id: suspicious-high-entropy-string
+    languages: [javascript]
+    message: "Suspicious high-entropy string detected, which may indicate an obfuscated payload (potential e-skimmer)."
+    severity: WARNING
+    pattern: $STR
+    metavariable-regex:
+      metavariable: $STR
+      regex: "^(?:[A-Za-z0-9+/]{50,})$"
+

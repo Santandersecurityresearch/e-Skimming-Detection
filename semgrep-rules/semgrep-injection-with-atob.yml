@@ -1,0 +1,13 @@
+rules:
+  - id: eskimmer-injection-with-atob
+    languages: [javascript]
+    message: "Potential e-skimmer detected: dynamic script injection combined with atob() usage (possible deobfuscation)."
+    severity: ERROR
+    patterns:
+      - pattern: |
+          var $SCRIPT = document.createElement("script");
+      - pattern: |
+          document.currentScript.remove();
+      - pattern: |
+          atob($X)
+

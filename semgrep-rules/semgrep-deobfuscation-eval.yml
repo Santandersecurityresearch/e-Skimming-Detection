@@ -1,0 +1,9 @@
+rules:
+  - id: eskimmer-deobfuscation-eval
+    languages: [javascript]
+    patterns:
+      - pattern: |
+          eval($X)
+    message: "Potential deobfuscation via eval() detected in JavaScript, which is suspicious when combined with dynamic script injection."
+    severity: WARNING
+
